@@ -20,11 +20,14 @@ export class News extends Component {
     }
 
     updateNews = async ()=>{
+      this.setState({
+        loading:true
+      })
       let {category}=this.props
-      let url=`https://newsapi.org/v2/top-headlines?country=us&apiKey=${"bf7e1bf300ae418a9df2b0b633de8a38"}&category=${category}&page=${this.state.page}`;
+      let url=`https://newsapi.org/v2/top-headlines?country=us&apiKey=${"bf7e1bf300ae418a9df2b0b633de8a38"}&category=${category}&page=${this.state.page+1}`;
       let response = await fetch(url)
       let parsedData = await response.json()
-      console.log(parsedData)
+      // console.log(parsedData)
       
       this.setState({
         articles : parsedData.articles,
@@ -33,11 +36,14 @@ export class News extends Component {
     }
     
     fetchMoreData =async ()=>{
-        let {category}=this.props
-        let url=`https://newsapi.org/v2/top-headlines?country=us&apiKey=${"bf7e1bf300ae418a9df2b0b633de8a38"}&category=${category}&page=${this.state.page}`;
-     let  response = await fetch(url)
+      this.setState({
+        loading:true
+      })
+      let {category}=this.props
+      let url=`https://newsapi.org/v2/top-headlines?country=us&apiKey=${"bf7e1bf300ae418a9df2b0b633de8a38"}&category=${category}&page=${this.state.page}`;
+      let  response = await fetch(url)
       let parsedData = await response.json()
-      console.log(parsedData)
+      // console.log(parsedData)
       this.setState({
         articles : this.state.articles.concat(parsedData.articles),
         totalResults : parsedData.totalResults,
@@ -57,7 +63,7 @@ export class News extends Component {
           loader={<Spinner />}
         >
       {this.state.articles.map((element)=>{
-       return <Newsitem key={element.title} title={element.title} description = {element.description} newsUrl={element.url} imageUrl ={element.urlToImage} />
+       return <Newsitem key={element.title} date={element.publishedAt} title={element.title} description = {element.description} newsUrl={element.url} imageUrl ={element.urlToImage} />
       })}
        </InfiniteScroll>
       </div>

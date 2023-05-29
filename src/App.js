@@ -16,11 +16,12 @@ export class App extends Component {
       <Navbar />
       <News apiKey={this.apiKey}/>
         <Routes>
-      <Route exact path = "/" element={<News category={''} key="health" apiKey={this.apiKey}/> }/>
+      <Route exact path = "/" element={<News category={'general'} key="general" apiKey={this.apiKey}/> }/>
+      <Route exact path = "/health" element={<News category={'health'} key="health" apiKey={this.apiKey}/> }/>
       <Route exact path = "/science" element={<News category={'science'} key="science" apiKey={this.apiKey}/> }/>
       <Route exact path = "/technology" element={<News category={'technology'} key="technology" apiKey={this.apiKey}/> }/>
       <Route exact path = "/sports" element={<News category={'sports'} key="sports" apiKey={this.apiKey}/> }/>
-      <Route exact path = "/buisness" element={<News category={'buisness'} key="buisness" apiKey={this.apiKey}/> }/>
+      <Route exact path = "/business" element={<News category={'business'} key="buisness" apiKey={this.apiKey}/> }/>
         </Routes>
       </Router>
     )

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export class Newsitem extends Component {
   render() {
-    let {title,description,imageUrl,newsUrl}=this.props
+    let {title,description,imageUrl,newsUrl, date}=this.props
     return (
       <>
       <div className="card mb-3" >
@@ -18,7 +18,7 @@ export class Newsitem extends Component {
 </a>
 
         <p className="card-text">{description?description:"No heading"}</p>
-        <p className="card-text"><small className="text-body-secondary">Last updated 3 mins ago</small></p>
+        <p className="card-text"><small className="text-body-secondary">{new Date(date).toGMTString()}</small></p>
       </div>
     </div>
   </div>
