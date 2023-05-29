@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import Navbar from './components/Navbar'
+import News from './components/News'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+export class App extends Component {
+  apiKey =process.env.REACT_APP_API_KEY
+  render() {
+    return (
+      <Router>
+      <Navbar />
+      <News apiKey={this.apiKey}/>
+        <Routes>
+      <Route exact path = "/" element={<News category={''} key="health" apiKey={this.apiKey}/> }/>
+      <Route exact path = "/science" element={<News category={'science'} key="science" apiKey={this.apiKey}/> }/>
+      <Route exact path = "/technology" element={<News category={'technology'} key="technology" apiKey={this.apiKey}/> }/>
+      <Route exact path = "/sports" element={<News category={'sports'} key="sports" apiKey={this.apiKey}/> }/>
+      <Route exact path = "/buisness" element={<News category={'buisness'} key="buisness" apiKey={this.apiKey}/> }/>
+        </Routes>
+      </Router>
+    )
+  }
 }
 
-export default App;
+export default App
