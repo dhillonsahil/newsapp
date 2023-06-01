@@ -24,7 +24,7 @@ export class News extends Component {
         loading:true
       })
       let {category}=this.props
-      let url=`https://newsapi.org/v2/top-headlines?country=us&apiKey=${"bf7e1bf300ae418a9df2b0b633de8a38"}&category=${category}&page=${this.state.page+1}`;
+      let url=`https://newsapi.org/v2/top-headlines?country=us&apiKey=${"bf7e1bf300ae418a9df2b0b633de8a38"}&category=${category}&page=${this.state.page}`;
       let response = await fetch(url)
       let parsedData = await response.json()
       // console.log(parsedData)
@@ -40,7 +40,7 @@ export class News extends Component {
         loading:true
       })
       let {category}=this.props
-      let url=`https://newsapi.org/v2/top-headlines?country=us&apiKey=${"bf7e1bf300ae418a9df2b0b633de8a38"}&category=${category}&page=${this.state.page}`;
+      let url=`https://newsapi.org/v2/top-headlines?country=us&apiKey=${"bf7e1bf300ae418a9df2b0b633de8a38"}&category=${category}&page=${this.state.page+1}`;
       let  response = await fetch(url)
       let parsedData = await response.json()
       // console.log(parsedData)
